@@ -1,0 +1,12 @@
+{
+  "name": "hb9hcr/mobile",
+  "description": "HB9HCR Mobile Library",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Chris Raidler",
+      "email": "chris@raidler.ch"
+    }
+  ]
+}
