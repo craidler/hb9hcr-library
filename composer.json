@@ -1,6 +1,6 @@
 {
-  "name": "hb9hcr/mobile",
-  "description": "HB9HCR Mobile Library",
+  "name": "craidler/hb9hcr",
+  "description": "HB9HCR Library",
   "minimum-stability": "dev",
   "license": "proprietary",
   "authors": [
