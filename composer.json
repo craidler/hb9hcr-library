@@ -8,10 +8,4 @@
       "name": "Chris Raidler",
       "email": "chris@raidler.ch"
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "hb9hcr\\": "src"
-    }
-  }
 }
