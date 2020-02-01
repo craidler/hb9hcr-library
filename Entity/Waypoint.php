@@ -13,6 +13,7 @@ use HB9HCR\Base\Item;
  * @property string $latitude
  * @property string $longitude
  * @property string $type
+ * @property string $comment
  * @property Map[] $maps
  */
 class Waypoint extends Item
@@ -69,7 +70,7 @@ class Waypoint extends Item
     protected static function filter(array $data): array
     {
         return array_filter($data, function ($k) {
-            return in_array($k, ['id', 'date', 'region', 'name', 'position', 'type']);
+            return in_array($k, ['id', 'date', 'region', 'name', 'position', 'type', 'comment']);
         }, ARRAY_FILTER_USE_KEY);
     }
 
@@ -105,5 +106,16 @@ class Waypoint extends Item
     public function maps(): array
     {
         return $this->offsetGet('maps');
+    }
+
+    /**
+     * @param array $data
+     * @return Item
+     */
+    public function update(array $data): Item
+    {
+        parent::update($data);
+        foreach ($this->maps as $map) $map->center = $this->position;
+        return $this;
     }
 }

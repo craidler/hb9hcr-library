@@ -16,16 +16,17 @@ class Google extends Service
      * @param Map $map
      * @return Image
      */
-    public function image(Map $map): Image
+    public function image(Map $map, array $params = []): Image
     {
-        $filename = sprintf('%s/map/%s.static.png', $this->cache, md5($map->center . implode('', $map->markers) . $map->type . $map->zoom));
+        $params = $params + ['size' => '475x500'];
+        $filename = sprintf('%s/map/%s.static.png', $this->cache, $map->hash);
 
         if (!file_exists($filename)) {
             file_put_contents($filename, file_get_contents(sprintf(
                 'https://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=%d&size=%s&maptype=%s&key=%s&markers=%s',
                 $map->center,
                 $map->zoom,
-                '475x500',
+                $params['size'],
                 $map->type,
                 $this->key,
                 implode('/', $map->markers)

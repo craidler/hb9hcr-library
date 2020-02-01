@@ -13,13 +13,13 @@ use HB9HCR\Base\Item;
 class Distance extends Item
 {
     /**
-     * @param string $rounding
+     * @param string $round
      * @param array $params
-     * @return mixed
+     * @return int
      */
-    public function km(string $rounding = 'ceil', array $params = [])
+    public function km(string $round = 'ceil', array $params = []): int
     {
-        return call_user_func_array($rounding, array_merge([$this->value * 0.001], $params));
+        return call_user_func_array($round, [$this->value * 0.001]);
     }
 
     /**

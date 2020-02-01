@@ -10,6 +10,7 @@ use HB9HCR\Base\Item;
  * @property array $markers
  * @property string $type
  * @property int $zoom
+ * @property string $hash
  */
 class Map extends Item
 {
@@ -28,12 +29,12 @@ class Map extends Item
      */
     public function hash(): string
     {
-        return sprintf(
+        return md5(sprintf(
             '%s-%s-%s-%d',
             $this->center,
-            $this->marker,
+            implode('', $this->markers),
             $this->type,
             $this->zoom
-        );
+        ));
     }
 }

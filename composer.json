@@ -3,6 +3,7 @@
   "description": "HB9HCR Library",
   "minimum-stability": "dev",
   "license": "proprietary",
+  "version": "1.0.2",
   "authors": [
     {
       "name": "Chris Raidler",
@@ -13,5 +14,8 @@
     "psr-4": {
       "HB9HCR\\" : ""
     }
+  },
+  "require": {
+    "ext-json": "*"
   }
 }
