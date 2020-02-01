@@ -21,7 +21,7 @@ class Waypoint extends Item
     const TYPE_ORIGIN = 'origin';
     const TYPE_CAMPING = 'camping';
     const TYPE_BIVOUAC = 'bivouac';
-    const TYPE_STATION = 'station';
+    const TYPE_SERVICE = 'service';
     const TYPE_BREAK = 'break';
     const TYPE_CHECKPOINT = 'checkpoint';
     const TYPE_SIGHTSEEING = 'sightseeing';
@@ -30,7 +30,7 @@ class Waypoint extends Item
         self::TYPE_ORIGIN,
         self::TYPE_CAMPING,
         self::TYPE_BIVOUAC,
-        self::TYPE_STATION,
+        self::TYPE_SERVICE,
         self::TYPE_BREAK,
         self::TYPE_CHECKPOINT,
         self::TYPE_SIGHTSEEING,
