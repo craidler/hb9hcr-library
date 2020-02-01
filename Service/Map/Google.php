@@ -14,6 +14,7 @@ class Google extends Service
 {
     /**
      * @param Map $map
+     * @param array $params
      * @return Image
      */
     public function image(Map $map, array $params = []): Image
@@ -23,13 +24,13 @@ class Google extends Service
 
         if (!file_exists($filename)) {
             file_put_contents($filename, file_get_contents(sprintf(
-                'https://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=%d&size=%s&maptype=%s&key=%s&markers=%s',
+                'https://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=%d&size=%s&maptype=%s&markers=%s&key=%s',
                 $map->center,
                 $map->zoom,
                 $params['size'],
                 $map->type,
-                $this->key,
-                implode('/', $map->markers)
+                implode('&markers=', $map->markers),
+                $this->key
             )));
         }
 
