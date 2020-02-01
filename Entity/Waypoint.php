@@ -115,7 +115,7 @@ class Waypoint extends Item
     public function update(array $data): Item
     {
         parent::update($data);
-        foreach ($this->maps as $map) $map->center = $this->position;
+        foreach ($this->maps as $map) $map->center = $map->markers[0] = $this->position;
         return $this;
     }
 }

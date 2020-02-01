@@ -17,11 +17,13 @@ class Map extends Item
     const TYPE_ROAD = 'road';
     const TYPE_SATELLITE = 'satellite';
     const TYPE_TERRAIN = 'terrain';
+    const TYPE_HYBRID = 'hybrid';
 
     const TYPES = [
         self::TYPE_ROAD,
         self::TYPE_SATELLITE,
-        self::TYPE_TERRAIN
+        self::TYPE_TERRAIN,
+        self::TYPE_HYBRID,
     ];
 
     /**
