@@ -16,8 +16,7 @@ class Route extends Item
      */
     public function distance(): Distance
     {
-        $value = 0;
-        return Distance::create(['value' => $value]);
+        return Distance::create(['value' => $this->offsetGet('routes')[0]['legs'][0]['distance']]);
     }
 
     /**
@@ -25,7 +24,6 @@ class Route extends Item
      */
     public function duration(): Duration
     {
-        $value = 0;
-        return Duration::create(['value' => $value]);
+        return Duration::create(['value' => $this->offsetGet('routes')[0]['legs'][0]['duration']]);
     }
 }
