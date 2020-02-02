@@ -13,6 +13,27 @@ use HB9HCR\Entity\Waypoint;
 class Google extends Service
 {
     /**
+     * @param Waypoint $origin
+     * @param Waypoint $destination
+     * @return string
+     */
+    public function direction(Waypoint $origin, Waypoint $destination): string
+    {
+        return sprintf('https://www.google.ch/maps/dir/%1$s/%2$s', $origin->position, $destination->position);
+    }
+
+    /**
+     * @param Waypoint $waypoint
+     * @param array $params
+     * @return string
+     */
+    public function map(Waypoint $waypoint, array $params = []): string
+    {
+        $params = $params + ['zoom' => 12];
+        return sprintf('https://www.google.ch/maps/place/%1$s/@%1$s,%2$dz', $waypoint->position, $params['zoom']);
+    }
+
+    /**
      * @param Map $map
      * @param array $params
      * @return Image
