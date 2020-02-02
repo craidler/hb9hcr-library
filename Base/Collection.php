@@ -118,6 +118,40 @@ class Collection extends ArrayObject
     }
 
     /**
+     * @return Item|null
+     */
+    public function first()
+    {
+        return $this->item(0);
+    }
+
+    /**
+     * @return Item|null
+     */
+    public function last()
+    {
+        return $this->item($this->count() - 1);
+    }
+
+    /**
+     * @param Item|string|int $needle
+     * @return Item
+     */
+    public function next($needle): Item
+    {
+        return $this->item($this->index($needle) + 1) ?? $this->first();
+    }
+
+    /**
+     * @param Item|string|int $needle
+     * @return Item
+     */
+    public function prev($needle): Item
+    {
+        return $this->item($this->index($needle) - 1) ?? $this->last();
+    }
+
+    /**
      * @param Item|string|int $needle
      * @return int|null
      */
