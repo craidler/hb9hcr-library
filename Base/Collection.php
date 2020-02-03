@@ -152,6 +152,30 @@ class Collection extends ArrayObject
     }
 
     /**
+     * @return Collection
+     */
+    public function reverse(): Collection
+    {
+        $collection = new static;
+        $collection->class = $this->class;
+        foreach (array_reverse($this->getArrayCopy()) as $item) $collection->append($item);
+        return $collection;
+    }
+
+    /**
+     * @param int $offset
+     * @param int|null $length
+     * @return Collection
+     */
+    public function slice(int $offset, ?int $length = null): Collection
+    {
+        $collection = new static;
+        $collection->class = $this->class;
+        foreach (array_slice($this->getArrayCopy(), $offset, $length) as $item) $collection->append($item);
+        return $collection;
+    }
+
+    /**
      * @param Item|string|int $needle
      * @return int|null
      */
