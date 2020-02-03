@@ -143,6 +143,25 @@ class Collection extends ArrayObject
     }
 
     /**
+     * @param int $size
+     * @param int $page
+     * @return array
+     */
+    public function page($size = 10, $page = 0): array
+    {
+        $pages = ceil($this->count() / $size);
+
+        return [
+            'prev' => 0 >= $page ? 0 : $page - 1,
+            'next' => $page >= $pages - 1 ? $pages - 1 : $page + 1,
+            'page' => $page,
+            'pages' => $pages,
+            'items' => $this->count(),
+            'collection' => static::create(array_slice($this->getArrayCopy(), $size * $page, $size), $this->class),
+        ];
+    }
+
+    /**
      * @param Item|string|int $needle
      * @return Item
      */
