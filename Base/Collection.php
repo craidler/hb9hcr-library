@@ -37,15 +37,15 @@ class Collection extends ArrayObject
     }
 
     /**
-     * @param string      $filename
-     * @param string|null $class
+     * @param string $filename
+     * @param string $class
      * @return static
      */
-    public static function load(string $filename, ?string $class = null): self
+    public static function load(string $filename, string $class): self
     {
         if (file_exists($filename)) {
             $data = json_decode(file_get_contents($filename), JSON_OBJECT_AS_ARRAY);
-            $instance = static::create($data['collection'], $data['class']);
+            $instance = static::create($data['collection'], $class);
         }
         else {
             $instance = static::create([], $class);
