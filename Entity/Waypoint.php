@@ -49,12 +49,15 @@ class Waypoint extends Item
 
             foreach ([[Map::TYPE_ROAD, 10], [Map::TYPE_ROAD, 14], [Map::TYPE_SATELLITE, 18]] as $map) {
                 $data['maps'][] = [
-                    'markers' => [$data['position']],
-                    'center' => $data['position'],
                     'type' => $map[0],
                     'zoom' => $map[1]
                 ];
             }
+        }
+
+        foreach ($data['maps'] as $i => $map) {
+            if (!array_key_exists('center', $map)) $data['maps'][$i]['center'] = $data['position'];
+            if (!array_key_exists('markers', $map)) $data['maps'][$i]['markers'] = [$data['position']];
         }
 
         $item = parent::create($data);
@@ -70,7 +73,7 @@ class Waypoint extends Item
     protected static function filter(array $data): array
     {
         return array_filter($data, function ($k) {
-            return in_array($k, ['id', 'date', 'region', 'name', 'position', 'type', 'comment']);
+            return in_array($k, ['id', 'date', 'region', 'name', 'position', 'type', 'comment', 'maps']);
         }, ARRAY_FILTER_USE_KEY);
     }
 
