@@ -43,16 +43,10 @@ class Collection extends ArrayObject
      */
     public static function load(string $filename, string $class): self
     {
-        if (file_exists($filename)) {
-            $data = json_decode(file_get_contents($filename), JSON_OBJECT_AS_ARRAY);
-            if (!is_array($data)) $data = ['collection' => []];
-            if (!array_key_exists('collection', $data)) $data['collection'] = [];
-            $instance = static::create($data['collection'], $class);
-        }
-        else {
-            $instance = static::create([], $class);
-        }
-
+        $data = file_exists($filename) ? json_decode(file_get_contents($filename), JSON_OBJECT_AS_ARRAY) : null;
+        if (!is_array($data)) $data = ['collection' => []];
+        if (!array_key_exists('collection', $data)) $data['collection'] = [];
+        $instance = static::create($data['collection'], $class);
         $instance->filename = $filename;
         return $instance;
     }
