@@ -45,6 +45,8 @@ class Collection extends ArrayObject
     {
         if (file_exists($filename)) {
             $data = json_decode(file_get_contents($filename), JSON_OBJECT_AS_ARRAY);
+            if (!is_array($data)) $data = ['collection' => []];
+            if (!array_key_exists('collection', $data)) $data['collection'] = [];
             $instance = static::create($data['collection'], $class);
         }
         else {
